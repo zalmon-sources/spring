@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.zp.entity.Student">
+        <property name="number" value="20141043047"/>
+    </bean>
+
+   <!-- <bean id="person" class="com.zp.entity.Person" autowire="byName">
+        <property name="name" value="peng.zhang"/>
+        <property name="sex" value="male"/>
+        <property name="age" value="21"/>
+    </bean>-->
+
+    <!--
+        使用 autowired 属性指定自动装配的方式
+        byName:根据 bean 的名字和 setter 风格的属性进行自动装配
+        byType:根据 bean 的类型进行自动装配,但若有多个相同类型的则会抛出异常
+    -->
+    <bean id="person" class="com.zp.entity.Person" p:name="peng.zhang" p:age="21" p:sex="male" autowire="byName"/>
+
+</beans>
