@@ -19,6 +19,8 @@
         byName:根据 bean 的名字和 setter 风格的属性进行自动装配
         byType:根据 bean 的类型进行自动装配,但若有多个相同类型的则会抛出异常
     -->
-    <bean id="person" class="com.zp.entity.Person" p:name="peng.zhang" p:age="21" p:sex="male" autowire="byName"/>
+    <bean id="person" class="com.zp.entity.Person" p:name="peng.zhang" p:age="21" p:sex="male">
+        <property name="student" ref="student"/>
+    </bean>
 
 </beans>
