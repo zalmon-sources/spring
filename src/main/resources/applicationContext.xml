@@ -14,7 +14,6 @@
     </bean>-->
 
     <!--
-        我就试试上传能不能行,master
         使用 autowired 属性指定自动装配的方式
         byName:根据 bean 的名字和 setter 风格的属性进行自动装配
         byType:根据 bean 的类型进行自动装配,但若有多个相同类型的则会抛出异常
