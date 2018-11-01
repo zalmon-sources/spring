@@ -14,12 +14,14 @@ public class ImgDownload {
 
     public static void main(String[] args) {
 
-        for (int i = 0; i <= 31; i++) {
-            String URL = "";
+        for (int i = 0; i <= 52; i++) {
+            String URL;
             if (i < 10) {
-                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180723/19/00" + i + ".jpg";
+                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180223/7/00" + i + ".jpg";
+            } else if (i < 100 && i > 10) {
+                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180223/7/0" + i + ".jpg";
             } else {
-                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180723/19/0" + i + ".jpg";
+                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180419/4/klqweo/" + i + "d.jpg";
             }
             java.net.URL imgURL;
             try {
