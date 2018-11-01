@@ -1,8 +1,6 @@
 package com.zp.worm;
 
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -11,7 +9,6 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -61,10 +58,12 @@ public class WormTest {
 
         try {
             response = httpClient.execute(httpGet);
-            if (HttpStatus.SC_OK == response.getStatusLine().getStatusCode()) {//判断状态码
-                HttpEntity httpEntity = response.getEntity(); //获取返回body
-                String result = EntityUtils.toString(httpEntity, "UTF-8");// 转成string
-                System.out.println(result);
+//            if (HttpStatus.SC_OK == response.getStatusLine().getStatusCode()) {//判断状态码
+//                HttpEntity httpEntity = response.getEntity(); //获取返回body
+//                String result = EntityUtils.toString(httpEntity, "UTF-8");// 转成string
+//                System.out.println(result);
+
+            String result = JsUtil.getAjaxContent("https://www.bilibili.com");
 
 //                获取网页中所有的a标签
                 Pattern pattern = Pattern.compile("<img\\b[^>]+\\bsrc=\"([^\"]*)\"[^>]*>([\\s\\S]*?)");
@@ -94,7 +93,7 @@ public class WormTest {
                         fo.close();
                     }
                 }
-            }
+//            }
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -117,3 +116,5 @@ public class WormTest {
         }
     }
 }
+
+
