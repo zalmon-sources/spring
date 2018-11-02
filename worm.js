@@ -1,44 +1,38 @@
+/***********************************
+ code:javascript
+ system:win  ||  linux
+ auther: luyi
+ mail : 543429245@qq.com
+ github: luyishisi
+ blog: https://www.urlteam.org
+ date：2016.9.12
+ 逻辑说明：使用phantomjs无界面浏览器作为操作平台，破解对方针对js解析的反爬虫辨别
+ ************************************/
+var page = require('webpage').create(),
+    system = require('system'),
+    address;
+address = system.args[1];
 
-//codes.js
-
-system = require('system')
-
-address = system.args[1];//获得命令行第二个参数 接下来会用到
-
-//console.log('Loading a web page');
-
-var page = require('webpage').create();
-
-var url = address;
-
-//console.log(url);
-
-page.open(url, function (status) {
-
-    //Page is loaded!
-
-    if (status !== 'success') {
-
-        console.log('Unable to post!');
-
-    } else {
-
-        //console.log(page.content);
-
-        //var title = page.evaluate(function() {
-
-        //  return document.title;//示范下如何使用页面的jsapi去操作页面的  www.oicqzone.com
-
-        //  });
-
-        //console.log(title);
-
-
-
-        console.log(page.content);
-
-    }
-
-    phantom.exit();
-
+//init and settings
+page.settings.resourceTimeout = 30000 ;
+page.settings.XSSAuditingEnabled = true ;
+//page.viewportSize = { width: 1000, height: 1000 };
+page.settings.userAgent = 'Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1';
+page.customHeaders = {
+    "Connection" : "keep-alive",
+    "Cache-Control" : "max-age=0",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6",
+};
+page.open(address, function() {
+    console.log(address);
+    console.log('begin');
 });
+//加载页面完毕运行
+page.onLoadFinished = function(status) {
+    window.scrollTo(0, document.documentElement.clientHeight);
+    // page.scrollHeight(100);
+    console.log('Status: ' + status);
+    console.log(page.content);
+    phantom.exit();
+};

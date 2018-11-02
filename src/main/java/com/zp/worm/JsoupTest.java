@@ -1,5 +1,13 @@
 package com.zp.worm;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,7 +28,8 @@ public class JsoupTest {
     public static void main(String[] args) {
 
         try {
-            Document document = Jsoup.connect("http://m.511wa.com/shaonv/2018/1029/5634.html").get();
+            Document document = Jsoup.connect("http://m.511wa.com/shaonv/2018/1027/5639.html").get();
+
             System.out.println(document);
             Element div = document.getElementById("nr234img");
             Elements url = div.select("img");
@@ -30,7 +39,7 @@ public class JsoupTest {
             Elements option = document.getElementById("dedepagetitles").select("option");
             for (Element element : option) {
                 String imgUrl = element.attr("value");
-                Document next = Jsoup.connect("http://m.511wa.com/shaonv/2018/1029/" + imgUrl).get();
+                Document next = Jsoup.connect("http://m.511wa.com/shaonv/2018/1027/" + imgUrl).get();
                 Element nextDiv = next.getElementById("nr234img");
                 Elements nextUrl = nextDiv.select("img");
                 jsoupTest.downloadImg(nextUrl);
@@ -45,7 +54,7 @@ public class JsoupTest {
      * 输入流下载图片
      * @param url img节点集合
      */
-    private void downloadImg(Elements url){
+    public void downloadImg(Elements url){
         for (Element element : url) {
             String URL=element.attr("src");
             System.out.println(URL);

@@ -17,11 +17,11 @@ public class ImgDownload {
         for (int i = 0; i <= 52; i++) {
             String URL;
             if (i < 10) {
-                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180223/7/00" + i + ".jpg";
+                URL = "http://pm.weakcn.com/uploadfile/gx02/181026/200" + i + ".jpg";
             } else if (i < 100 && i > 10) {
-                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180223/7/0" + i + ".jpg";
+                URL = "http://pm.weakcn.com/uploadfile/gx02/181026/20" + i + ".jpg";
             } else {
-                URL = "http://pm.weakcn.com/lifanacgup/lifanacg/20180419/4/klqweo/" + i + "d.jpg";
+                URL = "http://pm.weakcn.com/lifanacgup/lifanacg//20180223/7/" + i + "d.jpg";
             }
             java.net.URL imgURL;
             try {

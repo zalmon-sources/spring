@@ -31,7 +31,7 @@ public class JsUtil {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-        StringBuffer sbf = new StringBuffer();
+        StringBuilder sbf = new StringBuilder();
 
         String tmp = "";
 
@@ -40,8 +40,6 @@ public class JsUtil {
             sbf.append(tmp);
 
         }
-
-        //System.out.println(sbf.toString());
 
         return sbf.toString();
 
