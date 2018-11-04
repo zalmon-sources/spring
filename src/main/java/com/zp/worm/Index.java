@@ -19,11 +19,17 @@ public class Index {
 
     public static void main(String[] args) {
 
-        Document document = null;
+        Document document;
         try {
 //            获取页面首页
-            document = Jsoup.connect("http://m.511wa.com/shaonv").get();
+            document = Jsoup.connect("http://m.511wa.com/shaonv")
+                    .userAgent("Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1")
+                    .timeout(5000)
+                    .get();
+//            String shaonv = getAjaxContent("http://m.511wa.com/shaonv");
+//            document = Jsoup.parse(shaonv);
             Elements uls = document.getElementsByClass("pic pic1");
+            System.out.println(uls);
             for (Element ul : uls) {
 
 //                获取ul下的所有a标签
@@ -33,8 +39,9 @@ public class Index {
                 for (Element a : as) {
                     String url = "http://m.511wa.com" + a.attr("href");
                     Document sonDocument = Jsoup.connect(url).get();
-                    Element div = sonDocument.getElementById("nr234img");
-                    Elements img = div.select("img");
+//                    String sonShaonv = getAjaxContent(url);
+//                    Document sonDocument = Jsoup.parse(sonShaonv);
+                    System.out.println(sonDocument);
                     Index index = new Index();
 
 //                    为图集新建文件夹命名
@@ -80,12 +87,14 @@ public class Index {
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
+        } else {
+            return;
         }
 
         for (Element element : url) {
             String URL = element.attr("src");
             System.out.println(URL);
-            java.net.URL imgURL = null;
+            java.net.URL imgURL;
             try {
                 imgURL = new URL(URL);
                 String imageName = URL.substring(URL.lastIndexOf("/") + 1);

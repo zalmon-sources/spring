@@ -1,5 +1,8 @@
 package com.zp.worm;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import java.io.*;
 
 
@@ -33,7 +36,7 @@ public class JsUtil {
 
         StringBuilder sbf = new StringBuilder();
 
-        String tmp = "";
+        String tmp;
 
         while ((tmp = br.readLine()) != null) {
 
@@ -48,8 +51,9 @@ public class JsUtil {
 
     public static void main(String[] args) throws IOException {
 
-        String a = getAjaxContent("https://www.bilibili.com");
-        System.out.println(a);
+        String a = getAjaxContent("http://m.511wa.com/shaonv");
+        Document document = Jsoup.parse(a);
+        System.out.println(document);
 
     }
 
