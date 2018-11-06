@@ -16,9 +16,21 @@ public class MyQuartz {
 
         JobDetail job = newJob(MyJob.class).withIdentity("job1", "group1").build();
 
-        Trigger trigger = newTrigger().withIdentity("trigger1", "group1").build();
+        Trigger trigger = newTrigger().withIdentity("trigger1", "group1").startNow().build();
 
+        scheduler.scheduleJob(job, trigger);
 
+        scheduler.start();
+
+        try {
+            // wait 65 seconds to show job
+            Thread.sleep(5L * 1000L);
+            // executing...
+        } catch (Exception e) {
+            //
+        }
+
+        scheduler.shutdown(true);
 
     }
 }

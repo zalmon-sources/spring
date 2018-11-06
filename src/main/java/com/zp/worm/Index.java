@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Scanner;
 
 /**
  * Created by peng.zhang
@@ -26,8 +27,10 @@ public class Index {
                     .userAgent("Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1")
                     .timeout(5000)
                     .get();
-//            String shaonv = getAjaxContent("http://m.511wa.com/shaonv");
-//            document = Jsoup.parse(shaonv);
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println(document);
+
             Elements uls = document.getElementsByClass("pic pic1");
             System.out.println(uls);
             for (Element ul : uls) {
@@ -36,12 +39,15 @@ public class Index {
                 Elements as = ul.select("a");
 
 //                遍历a标签,获取图集的对应url
-                for (Element a : as) {
+                a:for (Element a : as) {
                     String url = "http://m.511wa.com" + a.attr("href");
-                    Document sonDocument = Jsoup.connect(url).get();
-//                    String sonShaonv = getAjaxContent(url);
-//                    Document sonDocument = Jsoup.parse(sonShaonv);
-                    System.out.println(sonDocument);
+                    Document sonDocument;
+                    try {
+                        sonDocument = Jsoup.connect(url).get();
+                    } catch (Exception e) {
+                        System.out.println(a.attr("alt") + "爬取出错");
+                        continue;
+                    }
                     Index index = new Index();
 
 //                    为图集新建文件夹命名
@@ -52,6 +58,8 @@ public class Index {
 
 //                    获取页面中的页数选择下拉框
                     Elements option = sonDocument.getElementById("dedepagetitles").select("option");
+
+                    boolean ok = false;
 
 //                    遍历下拉框,获取所有页面中的图片地址,并用文件流保存
                     for (Element element : option) {
@@ -65,7 +73,23 @@ public class Index {
 
                         Element nextDiv = next.getElementById("nr234img");
                         Elements nextUrl = nextDiv.select("img");
-                        index.downloadImg(nextUrl,path);
+                        if (nextUrl.size() == 0) {
+                            System.out.println(sonDocument.title() + "为ajax加载,无法爬取");
+                            continue a;
+                        } else {
+                            if (!ok) {
+                                System.out.println("是否选择爬取" +sonDocument.title() + "?");
+                                String flag = scanner.next();
+                                if (flag.equals("1")) {
+                                    ok = true;
+                                } else {
+                                    continue a;
+                                }
+                            }
+                            if (ok) {
+                                index.downloadImg(nextUrl,path);
+                            }
+                        }
                     }
                 }
             }
@@ -87,8 +111,6 @@ public class Index {
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
-        } else {
-            return;
         }
 
         for (Element element : url) {

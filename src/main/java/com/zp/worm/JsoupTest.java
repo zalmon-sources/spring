@@ -28,7 +28,7 @@ public class JsoupTest {
     public static void main(String[] args) {
 
         try {
-            Document document = Jsoup.connect("http://m.511wa.com/shaonv/2018/1027/5639.html").get();
+            Document document = Jsoup.connect("http://m.511wa.com/shaonv/2018/1029/5634.html").get();
 
             System.out.println(document);
             Element div = document.getElementById("nr234img");
@@ -39,7 +39,7 @@ public class JsoupTest {
             Elements option = document.getElementById("dedepagetitles").select("option");
             for (Element element : option) {
                 String imgUrl = element.attr("value");
-                Document next = Jsoup.connect("http://m.511wa.com/shaonv/2018/1027/" + imgUrl).get();
+                Document next = Jsoup.connect("http://m.511wa.com/shaonv/2018/1029/" + imgUrl).get();
                 Element nextDiv = next.getElementById("nr234img");
                 Elements nextUrl = nextDiv.select("img");
                 jsoupTest.downloadImg(nextUrl);
