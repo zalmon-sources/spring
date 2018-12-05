@@ -15,11 +15,11 @@ public class SingletonEnum {
     }
 
 //    声明枚举类型
-    private static enum Singleton {
+    private enum Singleton {
         INSTANCE;
 
         private SingletonEnum singletonEnum;
-        private Singleton(){
+        Singleton(){
             singletonEnum = new SingletonEnum();
         }
         private SingletonEnum getInstance(){
