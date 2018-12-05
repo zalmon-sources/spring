@@ -8,4 +8,12 @@ package com.design.singleton;
  */
 public class SingletonStatic {
 
+    private static class  SingletonHolder{
+        private static final SingletonStatic INSTANCE = new SingletonStatic();
+    }
+
+    private SingletonStatic(){}
+    private static SingletonStatic getInstance(){
+        return SingletonHolder.INSTANCE;
+    }
 }
