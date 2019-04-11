@@ -24,13 +24,13 @@ public class ImgDownload {
 
     public static void main(String[] args) {
 
-        for (int i = 179; i <= 179; i++) {
+        for (int i = 0; i <= 42; i++) {
             if (i < 10) {
-                URL = "http://pm.jxmfxs.com/" + i + ".jpg";
+                URL = "http://pm.jxmfxs.com/lifanacg/20170601/1/00" + i + ".jpg";
             } else if (i < 100 && i >= 10) {
-                URL = "http://pm.jxmfxs.com/" + i + ".jpg";
+                URL = "http://pm.jxmfxs.com/lifanacg/20170601/1/0" + i + ".jpg";
             } else {
-                URL = "http://pm.jxmfxs.com/" + i + ".jpg";
+                URL = "http://lf.jxmfxs.com/1117/8/" + i + ".jpg";
             }
 
             try {
@@ -44,6 +44,8 @@ public class ImgDownload {
                 e.printStackTrace();
             }
         }
+
+        System.out.println("下载任务已结束...");
 
         try {
             if (in != null) {
@@ -68,8 +70,8 @@ public class ImgDownload {
             htpcon.setDoOutput(true);
             htpcon.setDoInput(true);
             htpcon.setUseCaches(false);
-            htpcon.setConnectTimeout(5000);
-            htpcon.setReadTimeout(5000);
+            htpcon.setConnectTimeout(3000);
+            htpcon.setReadTimeout(3000);
             in = htpcon.getInputStream();
             int code = htpcon.getResponseCode();
             if (code == 200) {
@@ -100,7 +102,7 @@ public class ImgDownload {
             System.out.println("图片路径不存在,已跳过");
             return;
         } catch (IOException e) {
-            System.out.println("连接超时,正在重新连接...");
+            System.out.println("连接超时或错误,正在重新连接...");
             downloadImg();
         }
     }
