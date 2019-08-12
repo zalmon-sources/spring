@@ -100,7 +100,6 @@ public class ImgDownload {
             }
         } catch (FileNotFoundException e) {
             System.out.println("图片路径不存在,已跳过");
-            return;
         } catch (IOException e) {
             System.out.println("连接超时或错误,正在重新连接...");
             downloadImg();
@@ -110,8 +109,8 @@ public class ImgDownload {
     /**
      * 检测图片是否完整
      *
-     * @param fileName
-     * @return
+     * @param fileName 文件名
+     * @return 是否完整
      */
     private static Boolean isJPEG(String fileName) {
         boolean canRead = false;
@@ -125,7 +124,7 @@ public class ImgDownload {
                 break;
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return canRead;
     }
