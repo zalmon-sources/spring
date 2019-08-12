@@ -11,6 +11,14 @@ public class Student {
 
     String number;
 
+    public void beforeStudy(){
+        System.out.println("before study...");
+    }
+
+    public void afterStudy(){
+        System.out.println("after study...");
+    }
+
     public String getNumber() {
         return number;
     }

@@ -3,6 +3,7 @@ package com.zp.entity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * Created by peng.zhang
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration // 配置类
 @ComponentScan // 扫描当前包下的注解
+@ImportResource("classpath:applicationContext.xml") // 导入xml配置
 public class StudentConfig {
 
     @Bean

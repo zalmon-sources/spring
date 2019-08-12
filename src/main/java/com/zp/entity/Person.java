@@ -1,6 +1,5 @@
 package com.zp.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,7 +15,7 @@ public class Person {
     private Student student;
 
     public void print(){
-        System.out.println("this is person");
+        System.out.println("we are studying");
     }
 
     public Student getStudent() {
