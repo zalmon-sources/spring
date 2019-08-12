@@ -21,7 +21,9 @@ public class StudentConfig {
     }
 
     @Bean
-    public Person person(){
-        return new Person("lanlan","female",23);
+    public Person person(Student student){
+        Person person = new Person("lanlan", "female", 23);
+        person.setStudent(student);
+        return person;
     }
 }

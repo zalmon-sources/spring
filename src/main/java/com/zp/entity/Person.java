@@ -13,8 +13,6 @@ public class Person {
     private String name;
     private String sex;
     private Integer age;
-
-    @Autowired
     private Student student;
 
     public void print(){
