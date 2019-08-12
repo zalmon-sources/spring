@@ -32,7 +32,7 @@ public class Spring {
     public void personShouldNotBeNull(){
         assertNotNull(person);
         System.out.println(person);
-        person.print();
+        person.studying();
         System.out.println(person.getStudent().getNumber());
     }
 

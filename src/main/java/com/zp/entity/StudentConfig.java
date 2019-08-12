@@ -12,7 +12,9 @@ import org.springframework.context.annotation.ImportResource;
  */
 @Configuration // 配置类
 @ComponentScan // 扫描当前包下的注解
-@ImportResource("classpath:applicationContext.xml") // 导入xml配置
+// 导入xml配置，导入后在使用xml的Main方法中形成了循环调用，使切面执行了两次
+// 即配置了多个代理创建器，产生了多个代理，代理2代理了代理1，代理1代理了本体，所以就产生了aop执行两次
+@ImportResource("classpath:applicationContext.xml")
 public class StudentConfig {
 
     @Bean

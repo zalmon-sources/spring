@@ -28,13 +28,16 @@
         <property name="student" ref="student"/>
     </bean>-->
 
-    <!--  在xml中，引用配置类中的配置，StudentConfig中包含了Student，Person的定义，因此在下方的 ref中直接使用student  -->
-    <bean id="studentConfig" class="com.zp.entity.StudentConfig"/>
+    <!--
+        在xml中，引用配置类中的配置
+        此处注释，因为前方使用了 context:component-scan，无需手动导入
+    -->
+<!--    <bean id="studentConfig" class="com.zp.entity.StudentConfig"/>-->
 
     <!--  AOP  -->
     <aop:config>
         <aop:aspect ref="student">
-            <aop:pointcut id="study" expression="execution(* *.print(..))"/> <!-- 横切关注点 -->
+            <aop:pointcut id="study" expression="execution(* *.studying(..))"/> <!-- 横切关注点 -->
             <aop:before pointcut-ref="study" method="beforeStudy"/>
             <aop:after pointcut-ref="study" method="afterStudy"/>
         </aop:aspect>

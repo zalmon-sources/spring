@@ -16,7 +16,7 @@ public class Main {
 //        Person person = ctx.getBean(Person.class); // 不能存在多个Person定义
         Person person = (Person) ctx.getBean("person");
         System.out.println(person);
-        person.print();
+        person.studying();
         System.out.println(person.getStudent().getNumber());
     }
 
