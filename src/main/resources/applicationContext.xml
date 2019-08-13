@@ -43,4 +43,7 @@
         </aop:aspect>
     </aop:config>
 
+    <!-- 对应 @PropertySource("classpath:zh.properties") 声明源 -->
+    <!--<context:property-placeholder location="zh.properties"/>-->
+
 </beans>

@@ -1,10 +1,12 @@
 package com.zp;
 
+import com.zp.entity.Lion;
 import com.zp.entity.Person;
 import com.zp.entity.StudentConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -26,6 +28,7 @@ import static org.junit.Assert.assertNotNull;
 public class Spring {
 
     @Autowired
+    @Lion // 优先使用限定符为lion的装配,没有自定义限定符则使用@Qualifier
     private Person person;
 
     @Test
