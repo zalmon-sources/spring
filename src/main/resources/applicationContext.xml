@@ -37,7 +37,7 @@
     <!--  AOP  -->
     <aop:config>
         <aop:aspect ref="student">
-            <aop:pointcut id="study" expression="execution(* *.studying(..))"/> <!-- 横切关注点 -->
+            <aop:pointcut id="study" expression="execution(* com.zp.entity.Person.studying(..)) and within(com.zp.entity.*)"/> <!-- 横切关注点 -->
             <aop:before pointcut-ref="study" method="beforeStudy"/>
             <aop:after pointcut-ref="study" method="afterStudy"/>
         </aop:aspect>
