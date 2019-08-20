@@ -14,7 +14,7 @@ public class Person {
     private Integer age;
     private Student student;
 
-    public void studying(){
+    public void studying(String number){
         System.out.println("we are studying");
     }
 

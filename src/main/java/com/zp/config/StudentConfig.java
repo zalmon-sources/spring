@@ -1,5 +1,8 @@
-package com.zp.entity;
+package com.zp.config;
 
+import com.zp.entity.Lion;
+import com.zp.entity.Person;
+import com.zp.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -23,7 +26,7 @@ public class StudentConfig {
     Environment env;
 
     @Bean
-    @Qualifier("rebort") // 限定符
+    @Qualifier("rebort") // 限定符,当存在多个同类型的Bean时，使用进行区分
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE) // 设置为原型注入，每次注入都会重新生成一个实例
     public Student student() {
         Student student = new Student();

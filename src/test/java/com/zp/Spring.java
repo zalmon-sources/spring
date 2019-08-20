@@ -2,11 +2,10 @@ package com.zp;
 
 import com.zp.entity.Lion;
 import com.zp.entity.Person;
-import com.zp.entity.StudentConfig;
+import com.zp.config.StudentConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -35,7 +34,7 @@ public class Spring {
     public void personShouldNotBeNull(){
         assertNotNull(person);
         System.out.println(person);
-        person.studying();
+        person.studying("1");
         System.out.println(person.getStudent().getNumber());
     }
 

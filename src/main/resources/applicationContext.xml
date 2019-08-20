@@ -32,7 +32,7 @@
         在xml中，引用配置类中的配置
         此处注释，因为前方使用了 context:component-scan，无需手动导入
     -->
-<!--    <bean id="studentConfig" class="com.zp.entity.StudentConfig"/>-->
+<!--    <bean id="studentConfig" class="com.zp.config.StudentConfig"/>-->
 
     <!--  AOP  -->
     <aop:config>
