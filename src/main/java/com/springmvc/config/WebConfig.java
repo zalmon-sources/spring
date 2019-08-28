@@ -16,8 +16,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 
 @Configuration
-@EnableWebMvc  // 启用springmvc
-@ComponentScan("com.springmvc")
+@EnableWebMvc  // 启用springmvc 注解驱动 <mvc:annotation-driven>
+@ComponentScan("com.springmvc.controller")
 public class WebConfig extends WebMvcConfigurerAdapter{
 
     /**

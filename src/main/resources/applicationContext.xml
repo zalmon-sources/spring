@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="com.zp"/>
+    <context:component-scan base-package="com"/>
 
     <!--<bean id="student" class="com.zp.entity.Student">-->
         <!--<property name="number" value="20141043047"/>-->
