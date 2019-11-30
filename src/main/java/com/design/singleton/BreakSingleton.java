@@ -64,7 +64,7 @@ class Singleton{
     }
 
 //   反序列化定义该方法，则不需要创建新对象,避免反序列化破解单例模式
-    private Object readResolve() throws ObjectStreamException {
+    private Object readResolve() {
         return instance;
     }
 }
