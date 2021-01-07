@@ -16,7 +16,7 @@ import java.lang.annotation.*;
 // 作用接口、类、枚举、注解
 @Target(ElementType.TYPE)
 // 修饰的注解可以同时作用一个对象多次，但是每次作用注解又可以代表不同的含义
-// 将Game注解的值放入到People注解中
+// 相当于指向一个容器(People)，这样就可以在注解的地方重复标注注解
 @Repeatable(People.class)
 public @interface Game {
 
