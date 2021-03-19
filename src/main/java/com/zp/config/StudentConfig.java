@@ -18,7 +18,7 @@ import org.springframework.core.env.Environment;
 @ComponentScan // 扫描当前包下的注解
 // 导入xml配置，导入后在使用xml的Main方法中形成了循环调用，使切面执行了两次
 // 即配置了多个代理创建器，产生了多个代理，代理2代理了代理1，代理1代理了本体，所以就产生了aop执行两次
-@ImportResource("classpath:applicationContext.xml")
+//@ImportResource("classpath:applicationContext.xml")
 @PropertySource("classpath:zh.properties") // 声明属性源
 public class StudentConfig {
 
