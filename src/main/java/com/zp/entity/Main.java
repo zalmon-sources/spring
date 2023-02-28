@@ -21,6 +21,8 @@ public class Main {
 
         Object lion = ctx.getBean("Lion");
         System.out.println(lion);
+
+        System.out.println("GitTest");
     }
 
 }
