@@ -19,8 +19,10 @@ public class Main {
         person.studying("1");
         System.out.println(person.getStudent().getNumber());
 
-        // Object lion = ctx.getBean("Lion");
-        // System.out.println(lion);
+        Object lion = ctx.getBean("Lion");
+        System.out.println(lion);
+
+        System.out.println("GitTest");
     }
 
 }
